@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Football {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine(); // Consume the newline character after reading n
+
+        String team1 = "";
+        int score1 = 0;
+        String team2 = "";
+        int score2 = 0;
+
+        for (int i = 0; i < n; i++) {
+            String currentTeam = sc.nextLine();
+            if (team1.isEmpty()) {
+                team1 = currentTeam;
+                score1++;
+            } else if (currentTeam.equals(team1)) {
+                score1++;
+            } else if (team2.isEmpty()) {
+                team2 = currentTeam;
+                score2++;
+            } else { // currentTeam must be team2
+                score2++;
+            }
+        }
+
+        if (score1 > score2) {
+            System.out.println(team1);
+        } else {
+            System.out.println(team2);
+        }
+
+        sc.close();
+    }
+}
