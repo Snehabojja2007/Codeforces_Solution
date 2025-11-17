@@ -1,0 +1,30 @@
+import java.util.*;
+public class BasketBallTogether{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        long n=sc.nextLong();
+        long d=sc.nextLong();
+        long[] a=new long[(int)n];
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextLong();
+        }
+
+        Arrays.sort(a);
+        long left=-1;
+        long right=n-1;
+        long teamSize=1;
+        long teams=0;
+        while(left<right){
+            if((a[(int)right]*teamSize)<=d && left<right){
+                left++;
+                teamSize++;
+            }else{
+                teams++;
+                right--;
+                teamSize=1;
+            }
+        }
+        System.out.println(teams);
+        sc.close();
+    }
+}
